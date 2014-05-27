@@ -2,7 +2,7 @@
 require 'bootstrap.php';
 //require_once 'vendor/trails/trails.php';
 /**
- * exportablaufplan.class.php
+ * erweiterterablaufplan.class.php
  *
  * ...
  *
@@ -10,7 +10,7 @@ require 'bootstrap.php';
  * @version 0.1a
  */
 
-class exportablaufplan extends \StudIPPlugin implements \StandardPlugin {
+class erweiterterablaufplan extends \StudIPPlugin implements \StandardPlugin {
 
     public function __construct() {
         parent::__construct();

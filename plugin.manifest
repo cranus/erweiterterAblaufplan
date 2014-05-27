@@ -1,5 +1,5 @@
 pluginname=erweiterter Ablaufplan
-pluginclassname=exportablaufplan
+pluginclassname=erweiterterablaufplan
 origin=neo
 version=0.5
 studipMinVersion=2.5
