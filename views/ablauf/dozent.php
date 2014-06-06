@@ -23,6 +23,7 @@
         $Dozententermine = termin_related_persons::findByUser_id($d->user_id);
         foreach($Dozententermine as $t):
             $termine = termine::find($t["range_id"]);
+            if($termine["range_id"] == $semid) :
     ?>
         <tr>
             <td><?= date("D - d.m.Y", $termine["date"]) ?></td>
@@ -48,6 +49,7 @@
 
             </td>
         </tr>
+    <? ENDIF ?>
     <? ENDFOREACH ?>
 </table>
 <br />
@@ -71,7 +73,7 @@
     <?
     $Dozententermine = termine::OhneDozenten($semid);
     foreach($Dozententermine as $termine):
-
+        if($termine["range_id"] == $semid) :
         ?>
         <tr>
             <td><?= date("D - d.m.Y", $termine["date"]) ?></td>
@@ -97,5 +99,6 @@
 
             </td>
         </tr>
+        <? ENDIF ?>
     <? ENDFOREACH ?>
 </table>
