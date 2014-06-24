@@ -3,7 +3,7 @@
 <?= $sortierung ?>
 </div>
 <? FOREACH ($dozenten as $d) : ?>
-<h1>  <?= $d->vorname ?> <?= $d->nachname ?> (<?= $d->perms ?>)</h1>
+<h2>  <?= $d->vorname ?> <?= $d->nachname ?> (<?= $d->perms ?>)</h2>
 <table border="1" style="width: 100%">
     <colgroup>
         <col width="1*">
@@ -26,9 +26,9 @@
             if($termine["range_id"] == $semid) :
     ?>
         <tr>
-            <td><?= date("D - d.m.Y", $termine["date"]) ?></td>
-            <td><?= date("H:i", $termine["date"]) ?></td>
-            <td><?= date("H:i", $termine["end_time"]) ?></td>
+            <td><?= strftime("%a - %d.%m.%Y", $termine["date"]) ?></td>
+            <td><?= strftime("%H:%M", $termine["date"]) ?></td>
+            <td><?= strftime("%H:%M", $termine["end_time"]) ?></td>
             <td><?  $grp =  termin_related_groups::findBytermin_id($termine["termin_id"]);
                 if(!empty($grp[0])) :
                     foreach($grp as $g) :  ?>
@@ -54,7 +54,7 @@
 </table>
 <br />
 <? ENDFOREACH ?>
-<h1>Termine für alle Dozenten</h1>
+<h2>Termine für alle Dozenten</h2>
 <table border="1" style="width: 100%">
     <colgroup>
         <col width="1*">
@@ -76,9 +76,9 @@
         if($termine["range_id"] == $semid) :
         ?>
         <tr>
-            <td><?= date("D - d.m.Y", $termine["date"]) ?></td>
-            <td><?= date("H:i", $termine["date"]) ?></td>
-            <td><?= date("H:i", $termine["end_time"]) ?></td>
+            <td><?= strftime("%a - %d.%m.%Y", $termine["date"]) ?></td>
+            <td><?= strftime("%H:%M", $termine["date"]) ?></td>
+            <td><?= strftime("%H:%M", $termine["end_time"]) ?></td>
             <td><?  $grp =  termin_related_groups::findBytermin_id($termine["termin_id"]);
                 if(!empty($grp[0])) :
                     foreach($grp as $g) :  ?>
