@@ -3,7 +3,7 @@
 <?= $sortierung ?>
 </div>
 <? FOREACH ($gruppen as $g) : ?>
-<h1>  <?= $g->name ?> </h1>
+<h2>  <?= $g->name ?> </h2>
 <table border="1" style="width: 100%">
     <colgroup>
         <col width="1*">
@@ -23,11 +23,12 @@
         $gruppentermine = termin_related_groups::findbystatusgruppe_id($g["statusgruppe_id"]);
         foreach($gruppentermine as $t):
         $termine = termine::find($t["termin_id"]);
+        if(!empty($termine["date"])) :
         ?>
         <tr>
-            <td><?= date("D - d.m.Y", $termine["date"]) ?></td>
-            <td><?= date("H:i", $termine["date"]) ?></td>
-            <td><?= date("H:i", $termine["end_time"]) ?></td>
+            <td><?= strftime("%a - %d.%m.%Y", $termine["date"]) ?></td>
+            <td><?= strftime("%H:%M", $termine["date"]) ?></td>
+            <td><?= strftime("%H:%M", $termine["end_time"]) ?></td>
             <td><?
                 $doz = termin_related_persons::findByrange_id($t["termin_id"]);
                 if(empty($doz[0])) $doz = seminaruser::findBySQL("Seminar_id = ? AND status = ?",array($semid, "dozent"));
@@ -48,12 +49,13 @@
 
             </td>
         </tr>
+    <? ENDIF ?>
     <? ENDFOREACH ?>
 
 </table>
 <br />
 <? ENDFOREACH ?>
-<h1>Termine für alle Gruppen</h1>
+<h2>Termine f&uuml;r alle Gruppen</h2>
 <table border="1" style="width: 100%">
     <colgroup>
         <col width="1*">
@@ -76,9 +78,9 @@ foreach($gruppentermine as $t):
     $termine = termine::find($t["termin_id"]);
     ?>
     <tr>
-        <td><?= date("D - d.m.Y", $termine["date"]) ?></td>
-        <td><?= date("H:i", $termine["date"]) ?></td>
-        <td><?= date("H:i", $termine["end_time"]) ?></td>
+        <td><?= strftime("%a - %d.%m.%Y", $termine["date"]) ?></td>
+        <td><?= strftime("%H:%M", $termine["date"]) ?></td>
+        <td><?= strftime("%H:%M", $termine["end_time"]) ?></td>
         <td><?
             $doz = termin_related_persons::findByrange_id($t["termin_id"]);
             if(empty($doz[0])) $doz = seminaruser::findBySQL("Seminar_id = ? AND status = ?",array($semid, "dozent"));
