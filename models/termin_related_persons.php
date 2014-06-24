@@ -32,4 +32,16 @@ class termin_related_persons extends SimpleORMap
         parent::__construct($id);
     }
 
+    public static function ByUser_id($user_id)
+    {
+        $db = DBManager::get();
+        $sql = "SELECT termin_related_persons.range_id FROM termin_related_persons ".
+                "INNER JOIN termine on termine.termin_id = termin_related_persons.range_id ".
+                "WHERE termin_related_persons.user_id = ?".
+                "ORDER BY  termine.date ASC ";
+        $preparation = $db->prepare($sql);
+        $preparation->execute(array($user_id));
+        return $preparation->fetchAll();
+    }
+
 } 

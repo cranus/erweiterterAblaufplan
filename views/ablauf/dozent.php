@@ -20,7 +20,7 @@
         <th>Thema</th>
     </tr>
     <?
-        $Dozententermine = termin_related_persons::findByUser_id($d->user_id);
+        $Dozententermine = termin_related_persons::ByUser_id($d->user_id);
         foreach($Dozententermine as $t):
             $termine = termine::find($t["range_id"]);
             if($termine["range_id"] == $semid) :

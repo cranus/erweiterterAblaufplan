@@ -70,6 +70,6 @@ class ablaufController extends StudipController  {
     }
 
     function getSortierung($semid) {
-        return "Gruppieren: <a href='".PluginEngine::GetURL("exportablaufplan", array(), 'ablauf/index/'.$semid)."'>Keine</a>  <a href='".PluginEngine::GetURL("exportablaufplan", array(), 'ablauf/dozent/'.$semid)."'>Dozent</a> <a href='".PluginEngine::GetURL("exportablaufplan", array(), 'ablauf/gruppen/'.$semid)."'>Gruppen</a>";
+        return "Gruppieren: <a href='".PluginEngine::GetURL("erweiterterablaufplan", array(), 'ablauf/index/'.$semid)."'>Keine</a>  <a href='".PluginEngine::GetURL("erweiterterablaufplan", array(), 'ablauf/dozent/'.$semid)."'>Dozent</a> <a href='".PluginEngine::GetURL("erweiterterablaufplan", array(), 'ablauf/gruppen/'.$semid)."'>Gruppen</a>";
     }
 } 
