@@ -48,7 +48,7 @@ class termine extends SimpleORMap
     static function OhneGruppe($semid) {
         if(empty($semid)) return "Fehler";
         $db = DBManager::get();
-        $sql = "SELECT * FROM termine WHERE range_id = ? AND termin_id NOT IN (SELECT termin_id FROM  termin_related_groups)";
+        $sql = "SELECT * FROM termine WHERE range_id = ? AND termin_id NOT IN (SELECT termin_id FROM  termin_related_groups) ORDER BY  termine.date ASC";
         $preparation = $db->prepare($sql);
         $preparation->execute(array($semid));
         return $preparation->fetchAll();

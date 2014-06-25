@@ -31,4 +31,15 @@ class termin_related_groups extends SimpleORMap
     {
         parent::__construct($id);
     }
+
+    static function byGroupID($grpid) {
+        $db = DBManager::get();
+        $sql = "SELECT termin_related_groups.termin_id FROM termin_related_groups ".
+            "INNER JOIN termine on termine.termin_id = termin_related_groups.termin_id ".
+            "WHERE termin_related_groups.statusgruppe_id = ?".
+            "ORDER BY  termine.date ASC ";
+        $preparation = $db->prepare($sql);
+        $preparation->execute(array($grpid));
+        return $preparation->fetchAll();
+    }
 } 

@@ -20,7 +20,7 @@
         <th>Thema</th>
     </tr>
     <?
-        $gruppentermine = termin_related_groups::findbystatusgruppe_id($g["statusgruppe_id"]);
+        $gruppentermine = termin_related_groups::byGroupID($g["statusgruppe_id"]);
         foreach($gruppentermine as $t):
         $termine = termine::find($t["termin_id"]);
         if(!empty($termine["date"])) :
